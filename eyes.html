@@ -1,9 +1,132 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Live UTC Time</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark was the Night...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #f9a825;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+        }
+
+        button {
+            background-color: #f9a825;
+            cursor: pointer;
+        }
+
+        .message {
+            font-size: 1.2em;
+            color: red;
+            text-align: center;
+            display: none;
+        }
+
+        @media (min-width: 600px) {
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Live UTC Time as Float</h1>
-<body>
-<html>
+    <div class="container">
+        <h1>Dark was the Night...</h1>
+        <p>You begin your journey by wandering through the woods to the posted coordinates. As you approach the area, take notice to the fact that you are walking through land that is home to some of the largest swaths of Carolinian Forest in all of the world. This area of Ontario is home to some interesting creatures... when you arrive at the posted coordinates: shine your flashlight into the woods and see the "eyes" of many Great Horned Owls staring back at you.</p>
+        <p>Take a closer look at these glowing "eyes". What shape and color are they?</p>
+
+        <select id="shape-selector">
+            <option value="">Choose a shape</option>
+            <option value="triangle">Triangle</option>
+            <option value="square">Square</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="pentagon">Pentagon</option>
+            <option value="hexagon">Hexagon</option>
+            <option value="octagon">Octagon</option>
+            <option value="decagon">Decagon</option>
+        </select>
+
+        <select id="color-selector">
+            <option value="">Choose a color</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="purple">Purple</option>
+            <option value="grey">Grey</option>
+            <option value="orange">Orange</option>
+            <option value="black">Black</option>
+            <option value="pink">Pink</option>
+        </select>
+
+        <button id="submit-btn" type="button">Submit</button>
+        <p id="incorrect-message" class="message">Sorry, that doesn't look to be correct!</p>
+    </div>
+
+    <audio id="ambient-audio" src="https://github.com/CamrooCaching/BCNC/blob/main/owl3.mp3?raw=true" loop></audio>
+
+    <script>
+        const redirectUrl = "https://camroocaching.github.io/BCNC/owl.html";
+        const correctAnswerBase64 = "aGV4YWdvbiBvcmFuZ2U="; // "hexagon orange" encoded in Base64
+
+        document.getElementById("submit-btn").addEventListener("click", function() {
+            const shape = document.getElementById("shape-selector").value;
+            const color = document.getElementById("color-selector").value;
+            const userAnswer = shape + " " + color;
+            const userAnswerBase64 = btoa(userAnswer);
+
+            if (userAnswerBase64 === correctAnswerBase64) {
+                window.location.href = redirectUrl;
+            } else {
+                document.getElementById("incorrect-message").style.display = "block";
+            }
+        });
+
+        const ambientAudio = document.getElementById("ambient-audio");
+
+        function playAudioLoop() {
+            ambientAudio.play();
+        }
+
+        ambientAudio.addEventListener('ended', function() {
+            setTimeout(playAudioLoop, 200000);
+        });
+
+        document.addEventListener('click', function() {
+            // Start playing the audio when the page is first interacted with
+            ambientAudio.play();
+        });
+    </script>
+</body>
+</html>
