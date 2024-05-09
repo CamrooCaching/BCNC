@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Live UTC Time</title>
+    <title>Big Creek Night Cache -- GCXXXX</title>
+    <style>
+        /* Style for the header text */
+        h1 {
+            font-size: 2.5rem; /* Increase font size for better visibility */
+            margin-bottom: 10px; /* Add some margin below the header */
+            text-align: center; /* Center-align the text */
+        }
+
+        /* Additional styling for mobile friendliness */
+        body {
+            font-family: Arial, sans-serif; /* Set a clean, readable font */
+            font-size: 2.0rem; /* Font size */
+            margin: 0; /* Remove default margins */
+            padding: 0; /* Remove default padding */
+            text-align: center; /* Center-align the text */
+        }
+
+        /* Style for the UTC time display */
+        #utc-time {
+            font-size: 1.5rem; /* Font size for the UTC time */
+            text-align: center; /* Center-align the time */
+        }
+    </style>
 </head>
 <body>
-    <h1>Live UTC Time as Float</h1>
-    <div id="utc-time">0</div>
+    <h1>Big Creek Night Cache</h1>
+    <div>You must wait until the moon has risen to proceed with this cache! (9pm-6am)</div>
+    <div>This page refreshes every 8 seconds. Please wait for further instruction.</div>
+    <div>  </div>
+    <div>  </div>
+    <div> For an optimal experience, turn up your brightness and volume!</div>
 
     <script>
         // TimeZoneDB API key
@@ -14,7 +41,7 @@
         // API endpoint for TimeZoneDB
         const apiURL = `https://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=zone&zone=UTC`;
 
-       
+        // Base64-encoded redirect URL to https://camroocaching.github.io/BCNC/eyes.html
         const encodedRedirectURL = 'aHR0cHM6Ly9jYW1yb29jYWNoaW5nLmdpdGh1Yi5pby9CQ05DL2V5ZXMuaHRtbA==';
 
         // Function to fetch and update the live UTC time
