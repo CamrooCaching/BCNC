@@ -8,39 +8,38 @@
     <div id="utc-time">0</div>
 
     <script>
-        // Base64-encoded redirect URL
-        const encodedRedirectURL = 'aHR0cHM6Ly93d3cuZ2VvY2FjaGluZy5jb20vaG9tZQ==';
+        // TimeZoneDB API key
+        const apiKey = 'VDNUG4C7XEEG';
+
+        // API endpoint for TimeZoneDB
+        const apiURL = `https://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=zone&zone=UTC`;
 
         // Function to fetch and update the live UTC time
         async function fetchUtcTime() {
             try {
                 // Fetch the current UTC time from the online API
-                const response = await fetch('http://worldtimeapi.org/api/timezone/Etc/UTC');
-                
+                const response = await fetch(apiURL);
+
                 // Check if the response is successful
                 if (!response.ok) {
-                    throw new Error('Failed to fetch UTC time');
+                    throw new Error(`HTTP Error: ${response.status}`);
                 }
 
                 // Parse the JSON data
                 const data = await response.json();
 
                 // Extract the current UTC time as a float variable (seconds since epoch)
-                const currentUtcTime = data.unixtime;
+                const currentUtcTime = data.timestamp;
 
                 // Update the DOM element with the UTC time
                 document.getElementById('utc-time').innerText = currentUtcTime;
 
                 // Check the specified range condition
                 if (currentUtcTime > 1714349099 && currentUtcTime < 1714349199) {
-                window.location.href = 'https://www.geocaching.com/home';
-                }
-
-
                     // Redirect the user
-                    window.location.href = redirectURL;
+                    window.location.href = 'https://www.geocaching.com/home';
                 }
-                
+
             } catch (error) {
                 console.error('Error fetching UTC time:', error);
                 document.getElementById('utc-time').innerText = 'Error fetching UTC time';
@@ -48,7 +47,8 @@
         }
 
         // Fetch UTC time every second
-        setInterval(fetchUtcTime, 1000);
+        setInterval(fetchUtcTime, 5000);
     </script>
 </body>
 </html>
+
