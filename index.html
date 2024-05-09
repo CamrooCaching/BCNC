@@ -39,14 +39,14 @@
                     // Redirect the user
                     window.location.href = 'https://www.geocaching.com/home';
                 }
-
+                
             } catch (error) {
                 console.error('Error fetching UTC time:', error);
                 document.getElementById('utc-time').innerText = 'Error fetching UTC time';
             }
         }
 
-        // Fetch UTC time every second
+        // Call the fetchUtcTime function every second
         setInterval(fetchUtcTime, 5000);
     </script>
 </body>
