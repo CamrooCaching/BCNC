@@ -32,9 +32,10 @@
                 document.getElementById('utc-time').innerText = currentUtcTime;
 
                 // Check the specified range condition
-                if (currentUtcTime > 1715216400 && currentUtcTime < 1715248800) {
-                    // Decode the Base64-encoded redirect URL
-                    const redirectURL = atob(encodedRedirectURL);
+                if (currentUtcTime > 1714349099 && currentUtcTime < 1714349199) {
+                window.location.href = 'https://www.geocaching.com/home';
+                }
+
 
                     // Redirect the user
                     window.location.href = redirectURL;
