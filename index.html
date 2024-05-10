@@ -1,83 +1,67 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Big Creek Night Cache -- GCXXXX</title>
+    <title>Dark was the Night...</title>
     <style>
-        /* Style for the header text */
-        h1 {
-            font-size: 2.5rem; /* Increase font size for better visibility */
-            margin-bottom: 10px; /* Add some margin below the header */
-            text-align: center; /* Center-align the text */
-        }
-
-        /* Additional styling for mobile friendliness */
+        /* Styling for mobile-friendly and large font */
         body {
-            font-family: Arial, sans-serif; /* Set a clean, readable font */
-            font-size: 2.0rem; /* Font size */
-            margin: 0; /* Remove default margins */
-            padding: 0; /* Remove default padding */
-            text-align: center; /* Center-align the text */
-        }
-
-        /* Style for the UTC time display */
-        #utc-time {
-            font-size: 1.5rem; /* Font size for the UTC time */
-            text-align: center; /* Center-align the time */
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
         }
     </style>
 </head>
+
 <body>
-    <h1>Big Creek Night Cache</h1>
-    <div>You must wait until the moon has risen to proceed with this cache! (9pm-6am)</div>
-    <div>This page refreshes every 8 seconds. Please wait for further instruction.</div>
-    <div>  </div>
-    <div>  </div>
-    <div> For an optimal experience, turn up your brightness and volume!</div>
+    <h1>Dark was the Night...</h1>
+    <p>You must wait until the moon has risen to proceed with this cache! (9pm-6am)</p>
+    <p></p>
+    <p>For an optimal experience, turn up your brightness and volume!</p>
 
     <script>
-        // TimeZoneDB API key
         const apiKey = 'VDNUG4C7XEEG';
+        const timeZoneDBApiUrl = `https://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=zone&zone=America/New_York`;
 
-        // API endpoint for TimeZoneDB
-        const apiURL = `https://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=zone&zone=UTC`;
+        
+        const encodedUrl = 'aHR0cHM6Ly9jYW1yb29jYWNoaW5nLmdpdGh1Yi5pby9CQ05DL2V5ZXMuaHRtbA=='; 
 
-        // Base64-encoded redirect URL to https://camroocaching.github.io/BCNC/eyes.html
-        const encodedRedirectURL = 'aHR0cHM6Ly9jYW1yb29jYWNoaW5nLmdpdGh1Yi5pby9CQ05DL2V5ZXMuaHRtbA==';
-
-        // Function to fetch and update the live UTC time
-        async function fetchUtcTime() {
+        // Function to fetch current time from TimeZoneDB API
+        async function fetchTime() {
             try {
-                // Fetch the current UTC time from the online API
-                const response = await fetch(apiURL);
-
-                // Check if the response is successful
-                if (!response.ok) {
-                    throw new Error(`HTTP Error: ${response.status}`);
-                }
-
-                // Parse the JSON data
+                const response = await fetch(timeZoneDBApiUrl);
                 const data = await response.json();
+                const currentTime = new Date(data.formatted);
+                const currentHour = currentTime.getUTCHours();
+                const estHour = currentHour - 4; // Convert UTC to EST
 
-                // Extract the current UTC time as a float variable (seconds since epoch)
-                const currentUtcTime = data.timestamp;
+                // Check if current EST time is between 9 pm and 6 am
+                if (estHour >= 21 || estHour < 6) {
+                    // Decrypt the base64 URL
+                    const redirectUrl = atob(encodedUrl.trim());
 
-                // Check the specified range condition
-                if (currentUtcTime > 1715216400 && currentUtcTime < 1715248800) {
-                    // Decode the Base64-encoded redirect URL
-                    const redirectURL = atob(encodedRedirectURL);
-
-                    // Redirect the user
-                    window.location.href = redirectURL;
+                    // Check if the URL is valid
+                    if (redirectUrl.startsWith("https://")) {
+                        window.location.href = redirectUrl;
+                    } else {
+                        console.error('Invalid URL after decoding:', redirectUrl);
+                    }
+                } else {
+                    // Refresh the page after 8 seconds
+                    setTimeout(() => {
+                        location.reload();
+                    }, 8000);
                 }
-
             } catch (error) {
-                console.error('Error fetching UTC time:', error);
-                document.getElementById('utc-time').innerText = 'Error fetching UTC time';
+                console.error('Error fetching time:', error);
             }
         }
 
-        // Fetch UTC time every second
-        setInterval(fetchUtcTime, 8000);
+        // Call the function to fetch the time when the page loads
+        window.onload = fetchTime;
     </script>
 </body>
+
 </html>
