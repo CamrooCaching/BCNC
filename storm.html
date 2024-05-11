@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dark was the Night...</title>
+    <style>
+        /* Styling for dark background and orange text */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c; /* Dark background */
+            color: orange; /* Orange text */
+            text-align: center; /* Centered text */
+            padding: 20px; /* Padding around the text */
+            margin: 0; /* Remove default margin */
+            height: 100vh; /* Make the body full height of the viewport */
+            display: flex; /* Use flex layout */
+            flex-direction: column; /* Arrange elements in a column */
+            justify-content: center; /* Center elements vertically */
+            align-items: center; /* Center elements horizontally */
+        }
+        /* Header text styling */
+        h1 {
+            font-size: 36px; /* Larger font size for header */
+            margin-bottom: 20px; /* Space below header */
+        }
+        /* Body text styling */
+        p {
+            font-size: 18px; /* Medium font size for body text */
+            margin-bottom: 20px; /* Space below body text */
+        }
+        /* Red bold text styling */
+        .red-bold {
+            color: red; /* Red text */
+            font-weight: bold; /* Bold text */
+        }
+        /* Continue button styling */
+        #continue-btn {
+            display: block; /* Ensure button visibility */
+            font-size: 16px; /* Medium font size */
+            padding: 10px 20px;
+            border-radius: 5px; /* Rounded corners */
+            border: none;
+            background-color: orange; /* Orange button */
+            color: #1c1c1c; /* Dark text on button */
+            cursor: pointer; /* Pointer cursor */
+            transition: background-color 0.3s; /* Smooth color transition */
+        }
+        #continue-btn:hover {
+            background-color: darkorange; /* Darker orange on hover */
+        }
+    </style>
+    <script>
+        // Function to handle continue button click
+        function handleContinue() {
+            // Get the continue button element
+            var continueBtn = document.getElementById('continue-btn');
+            // Check if the button exists
+            if (continueBtn) {
+                // Remove the continue button once clicked
+                continueBtn.parentNode.removeChild(continueBtn);
+            }
+
+            // Fade the screen to black
+            document.body.style.transition = 'background-color 2s';
+            document.body.style.backgroundColor = 'black';
+
+            // Wait for 3 seconds
+            setTimeout(() => {
+                // Pulse the screen white with big black bold text
+                var text = document.createElement('div');
+                text.style.color = 'black';
+                text.style.fontWeight = 'bold';
+                text.style.fontSize = '48px';
+                text.textContent = 'N 43';
+                document.body.appendChild(text);
+
+                document.body.style.backgroundColor = 'white';
+
+                // Play thunder audio clip
+                var audio = new Audio('https://github.com/CamrooCaching/BCNC/blob/main/thunder.mp3?raw=true');
+                audio.play();
+
+                // Wait for 2 seconds
+                setTimeout(() => {
+                    // Remove text and pulse again
+                    document.body.removeChild(text);
+                    document.body.style.backgroundColor = 'black';
+
+                    setTimeout(() => {
+                        // Pulse the screen white with big black bold text
+                        text = document.createElement('div');
+                        text.style.color = 'black';
+                        text.style.fontWeight = 'bold';
+                        text.style.fontSize = '48px';
+                        text.textContent = '6.533';
+                        document.body.appendChild(text);
+
+                        document.body.style.backgroundColor = 'white';
+
+                        // Play thunder audio clip
+                        audio = new Audio('https://github.com/CamrooCaching/BCNC/blob/main/thunder.mp3?raw=true');
+                        audio.play();
+
+                        // Wait for 2 seconds
+                        setTimeout(() => {
+                            // Remove text and pulse again
+                            document.body.removeChild(text);
+                            document.body.style.backgroundColor = 'black';
+
+                            setTimeout(() => {
+                                // Pulse the screen white with big black bold text
+                                text = document.createElement('div');
+                                text.style.color = 'black';
+                                text.style.fontWeight = 'bold';
+                                text.style.fontSize = '48px';
+                                text.textContent = 'W 080';
+                                document.body.appendChild(text);
+
+                                document.body.style.backgroundColor = 'white';
+
+                                // Play thunder audio clip
+                                audio = new Audio('https://github.com/CamrooCaching/BCNC/blob/main/thunder.mp3?raw=true');
+                                audio.play();
+
+                                // Wait for 2 seconds
+                                setTimeout(() => {
+                                    // Remove text and pulse again
+                                    document.body.removeChild(text);
+                                    document.body.style.backgroundColor = 'black';
+
+                                    setTimeout(() => {
+                                        // Pulse the screen white with big black bold text
+                                        text = document.createElement('div');
+                                        text.style.color = 'black';
+                                        text.style.fontWeight = 'bold';
+                                        text.style.fontSize = '48px';
+                                        text.textContent = '3.770';
+                                        document.body.appendChild(text);
+
+                                        document.body.style.backgroundColor = 'white';
+
+                                        // Play thunder audio clip
+                                        audio = new Audio('https://github.com/CamrooCaching/BCNC/blob/main/thunder.mp3?raw=true');
+                                        audio.play();
+
+                                        // Wait for 2 seconds
+                                        setTimeout(() => {
+                                            // Remove text and pulse again
+                                            document.body.removeChild(text);
+                                            document.body.style.backgroundColor = 'black';
+
+                                            // Wait for 5 seconds before repeating pulse sequence
+                                            setTimeout(handleContinue, 5000);
+                                        }, 2000);
+                                    }, 2000);
+                                }, 2000);
+                            }, 6000);
+                        }, 2000);
+                    }, 2000);
+                }, 2000);
+            }, 3000);
+
+            // Play rain audio clip and loop
+            var rainAudio = new Audio('https://github.com/CamrooCaching/BCNC/blob/main/rain.mp3?raw=true');
+            rainAudio.loop = true;
+            rainAudio.play();
+        }
+    </script>
+</head>
+<body>
+    <h1>Dark was the Night...</h1>
+    <p class="red-bold">Combination for lock on final: Up, Left, Left, Right -- I'd recommend writing this down!</p>
+    <br>
+    <br>
+    <p>
+        The low-lying lands you stand on right now have overtime become a floodplain of this meandering section of Big Creek. During seasons of heavy rainfall or ice melt, this whole area will find itself submerged under mass amounts of water. This is not an area you'd want to be in during a heavy storm. On that note, you may want to make your way back to the trailhead as it seems a thunderstorm may be approaching. Seek shelter at the final coordinates which will be found by clicking continue!
+    </p>
+    <button id="continue-btn" onclick="handleContinue()">Continue</button>
+</body>
+</html>
