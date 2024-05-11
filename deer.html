@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dark was the Night...</title>
+    <style>
+        /* Styling for dark background and orange text */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c; /* Dark background */
+            color: orange; /* Orange text */
+            text-align: center; /* Centered text */
+            padding: 20px; /* Padding around the text */
+            margin: 0; /* Remove default margin */
+            height: 100vh; /* Make the body full height of the viewport */
+            display: flex; /* Use flex layout */
+            flex-direction: column; /* Arrange elements in a column */
+            justify-content: center; /* Center elements vertically */
+            align-items: center; /* Center elements horizontally */
+        }
+        /* Header text styling */
+        h1 {
+            font-size: 36px; /* Larger font size for header */
+            margin-bottom: 20px; /* Space below header */
+        }
+        /* Body text styling */
+        p {
+            color: white; /* White text */
+            font-size: 20px; /* Slightly larger font size for body text */
+            font-weight: bold; /* Bold text */
+            line-height: 1.5; /* Increased line height for better readability */
+            margin-bottom: 20px; /* Space below body text */
+        }
+        /* Input and button styling */
+        input, button {
+            font-size: 16px; /* Medium font size */
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px; /* Rounded corners */
+            border: none;
+            width: 100%; /* Full width */
+            max-width: 300px; /* Maximum width */
+        }
+        button {
+            background-color: orange; /* Orange button */
+            color: #1c1c1c; /* Dark text on button */
+            cursor: pointer; /* Pointer cursor */
+        }
+        /* Error message styling */
+        #error-message {
+            color: red; /* Red text for error message */
+            font-weight: bold; /* Bold text */
+            display: none; /* Initially hidden */
+            margin-top: 10px; /* Space above error message */
+        }
+    </style>
+    <script>
+        // Function to handle form submission
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent form from submitting the default way
+            
+            const inputValue = document.getElementById('input-code').value.trim();
+            const errorMessage = document.getElementById('error-message');
+            
+           
+            if (inputValue.toUpperCase() === 'BBB6809') {
+                // Redirect to the specified URL
+                window.location.href = 'https://camroocaching.github.io/BCNC/storm.html';
+            } else {
+                // Display error message
+                errorMessage.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Dark was the Night...</h1>
+    <p>
+        As you look to your left and your right down Mulligan Road, you notice some deer tracks in the ground and take a closer look. Whitetail Deer are one of the most common animals found here, with over 400,000 across all of Ontario, sighting one of these creatures is a common occurrence.<br>
+        You make your way NE down the road until you reach a dead end. The road once went through here, but over time the bridge fell into disrepair and was eventually removed. Big Creek now stands mostly untouched as nature finds its way back into this area. When you approach the end of the road you'll see the glow of the checkerboard, on the back you should see a barcode with the text "County of Brant" above it. Submit the code below the barcode to move onto the next stage.
+    </p>
+    <form onsubmit="handleSubmit(event)">
+        <input type="text" id="input-code" placeholder="Enter the code" required />
+        <br />
+        <button type="submit">Submit</button>
+    </form>
+    <p id="error-message">Sorry, that is incorrect!</p>
+</body>
+</html>
